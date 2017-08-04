@@ -14,7 +14,7 @@ var execute = (command) => {
 
 var getCommitHash = () => {
   return new Promise((resolve,reject) => {
-    execute('git rev-parse HEAD')
+    execute('git rev-parse master')
       .then(res => {
         resolve(res.stdout.trim());
       })
