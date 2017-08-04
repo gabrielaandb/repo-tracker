@@ -3,7 +3,11 @@ var getCommitHash = require('./lib').getCommitHash;
 
 function Tracker (url, interval, onChange) {
 
+  if (!(url && interval)) throw new Error('url and interval required');
+  if (!onChange) onChange = () => { console.log('changes were made'); }
+
   this.url = url;
+  this.onChange = onChange;
 
   getCommitHash(url).then(hash => {
     console.log(hash);
@@ -20,6 +24,7 @@ Tracker.prototype.track = function(interval) {
         console.log('changes were made!!!');
         console.log(hash);
         this.currentHash = hash;
+        this.onChange();
       } else {
         console.log('no changes made');
       }
@@ -29,4 +34,6 @@ Tracker.prototype.track = function(interval) {
 
 
 
-var tracker = new Tracker('https://github.com/gabrielaandb/repo-tracker', 10000);
+var tracker = new Tracker('https://github.com/gabrielaandb/repo-tracker', 10000, () => {
+  console.log("HELLO WORLD");
+});
