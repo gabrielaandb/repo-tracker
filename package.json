@@ -1,7 +1,7 @@
 {
   "name": "repo-tracker",
-  "version": "1.0.0",
-  "description": "Simple utility to track git repo changes",
+  "version": "1.0.1",
+  "description": "Simple utility to execute code on git repo change",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -23,5 +23,5 @@ var getCommitHash = (url) => {
   });
 }
 
-
+module.exports.execute = execute;
 module.exports.getCommitHash = getCommitHash;

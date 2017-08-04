@@ -33,7 +33,5 @@ Tracker.prototype.track = function(interval) {
 }
 
 
-
-var tracker = new Tracker('https://github.com/gabrielaandb/repo-tracker', 10000, () => {
-  console.log("HELLO WORLD");
-});
+module.exports = Tracker;
+module.exports.execute = require('./lib').execute;
