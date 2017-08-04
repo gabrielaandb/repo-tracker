@@ -12,11 +12,12 @@ var execute = (command) => {
   });
 }
 
-var getCommitHash = () => {
+var getCommitHash = (url) => {
   return new Promise((resolve,reject) => {
-    execute('git rev-parse master')
+    execute(`git ls-remote ${url} | head -1 | sed "s/HEAD//"`)
       .then(res => {
-        resolve(res.stdout.trim());
+        var hash = res.stdout.trim();
+        resolve(hash);
       })
       .catch(reject);
   });
