@@ -16,11 +16,11 @@ var getCommitHash = () => {
   return new Promise((resolve,reject) => {
     execute('git rev-parse HEAD')
       .then(res => {
-        resolve(res.stdout);
+        resolve(res.stdout.trim());
       })
       .catch(reject);
   });
 }
 
 
-getCommitHash().then(console.log);
+module.exports.getCommitHash = getCommitHash;
